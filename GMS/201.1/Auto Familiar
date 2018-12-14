@@ -1,0 +1,55 @@
+//Credit kevintjuh93 for familiar offsets
+
+[ENABLE]
+alloc(hook,222)
+alloc(summon_familiar,128)
+label(ending)
+label(return)
+
+hook:
+pushad
+mov edi,[033C1D3C] //CUserlocal 8B 3D ? ? ? ?  8B CF F3
+mov edi,[edi+00015D94] //apFamiliar 8B 87 ? ? ? ? 8B ? ? 04 8B ? ?  89 ? ? 85
+cmp [edi+04],00 // Value = 0 when familiar is not summoned
+jne ending
+call summon_familiar
+ending:
+popad
+mov fs:[00000000],eax //Original OP
+jmp return
+
+summon_familiar: // 8B 0D ? ? ? ? 50 E8 ? ? ? ? 8D ? ? E8 ? ? ? ? 8B
+mov ecx,[036B3D4C]
+push 0097FB67 //0097FB67 Big Spider Familiar 0097FAA2 Jr Boogie Familiar
+call 029F3BF0 //Call below using AOB above
+ret
+
+0172E4C8: //GenerateMovePath Function (script won't execute unless theres mobs)
+jmp hook
+nop
+return:
+
+029F3CE0:: //Summon Familiar While Soaring
+db EB
+
+01291660: //Familiar Disarm
+ret
+
+02794EF0: //No Blue Box (so you don't crash on rope/etc)
+ret
+
+[DISABLE]
+dealloc(hook)
+
+0172E4C8: // 3D E4 69 88 00 B9 01 00 00 00 [SECOND FS BELOW FUNCTION START]
+mov fs:[00000000],eax
+
+029F3CE0: //74 ? 8B 80 ? ? ? ? 83 F8 01 74 ? 83 F8 02 75
+db 74
+
+01291660: //  81 C1 88 13 00 00 3B [FIRST] [FUNCTION START]
+push ebp
+
+//E8 ? ? ? ? 8B C8 E8 ? ? ? ? E8 ? ? ? ? 83 C4 1C 33 F6 EB [FIRST 2 CALLS BELOW]
+02794EF0: //55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 83 EC ? 53 56 57 A1 ? ? ? ? 33 C5 50 8D ? ? 64 A3 00 00 00 00 C7 ? ? 00 00 00 00 E8 ? ? ? ? 83 7D ? 00 75 ? [3 CALLS BELOW]
+push ebp

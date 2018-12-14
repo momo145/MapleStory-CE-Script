@@ -1,0 +1,15 @@
+//Original credits OuterHaven
+[enable]
+aobscan(bullet_check,0F 84 ? ? 00 00 8D ? ? 68 ? ? 00 00 50 E8 ? ? ? ? 83 C4 08 84 ? 74)
+label(_bullet_check)
+registersymbol(_bullet_check)
+
+bullet_check:
+_bullet_check: //Infinite Bullets
+db 0F 85
+
+[disable]
+bullet_check:
+_bullet_check: 
+db 0F 84
+unregistersymbol(_bullet_check)
