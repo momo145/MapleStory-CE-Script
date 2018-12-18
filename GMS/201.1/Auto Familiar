@@ -8,7 +8,7 @@ label(return)
 
 hook:
 pushad
-mov edi,[033C1D3C] //CUserlocal 8B 3D ? ? ? ?  8B CF F3
+mov edi,[036D9808] //CUserlocal 8B 3D ? ? ? ?  8B CF F3
 mov edi,[edi+00015D94] //apFamiliar 8B 87 ? ? ? ? 8B ? ? 04 8B ? ?  89 ? ? 85
 cmp [edi+04],00 // Value = 0 when familiar is not summoned
 jne ending
