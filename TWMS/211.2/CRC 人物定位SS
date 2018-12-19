@@ -1,0 +1,8 @@
+//TwMS v211.2 CRC 人物定位SS 
+[Enable]
+0096ccf2:   //74 ?? 8b 07 8b cf 5f
+DB eb
+
+[Disable]
+0096ccf2:
+DB 74

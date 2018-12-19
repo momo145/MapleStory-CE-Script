@@ -1,0 +1,36 @@
+// TWMS V2.11.2 CRC 全圖吸怪
+// UpdateTime: 2018-10-10
+// Source: GMS
+
+[ENABLE]
+alloc(hook,128)
+label(return)
+
+hook:
+mov [esp+04],9
+mov [esp+20],1
+mov [esp+24],11
+mov [esp+48],1
+mov eax,[03733EEC]
+mov eax,[eax+000150EC]
+add eax,32 //Adjust X
+mov [esp+28],eax
+mov eax,[03733EEC] 
+mov eax,[eax+000150EC+04]
+mov [esp+2C],eax
+push ebp
+mov ebp,esp
+push -01
+jmp return
+
+01313660: 
+jmp hook
+return:
+
+[DISABLE]
+01313660:
+push ebp
+mov ebp,esp
+push -01
+
+dealloc(hook)

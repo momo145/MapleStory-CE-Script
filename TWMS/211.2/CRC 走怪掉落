@@ -1,0 +1,8 @@
+//TwMS v211.2 CRC 走怪掉落
+[Enable]
+02325D6A:
+jmp 02325D70  
+
+[Disable]
+02325D6A:
+je 02329D8C

@@ -1,0 +1,9 @@
+//TwMS v211.2 CRC 技能不位移
+
+[Enable]
+01FC3FF6:
+mov [esi+04],00000000
+
+[DISABLE]
+01FC3FF6:
+mov [esi+04],00000001

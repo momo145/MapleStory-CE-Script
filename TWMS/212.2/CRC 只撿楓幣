@@ -1,0 +1,8 @@
+//TwMS v212.2 CRC 只撿楓幣
+//Update at v212.2 by btb
+[Enable]
+00E9D62F:  
+db 0f 84
+[Disable]
+00E9D62F:
+db 0f 85

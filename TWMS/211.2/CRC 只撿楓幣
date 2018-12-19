@@ -1,0 +1,7 @@
+//TwMS v211.2 CRC 只撿楓幣
+[Enable]
+00E4F62F:
+jmp 00E4F631
+[Disable]
+00E4F62F:
+db 74 1B 8D 4D BC   

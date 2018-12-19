@@ -1,0 +1,9 @@
+//CMS v155.1 CRC 走怪掉落
+[Enable]
+02389EAA:
+jmp 02389EB0  
+
+[Disable]
+02389EAA:
+je 0238DEBD
+ 

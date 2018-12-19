@@ -1,0 +1,26 @@
+// TwMS v212.2 CRC 滑鼠指向取得技能ID
+// ReCreate:btb 2018-12-5
+[ENABLE]
+RegisterSymbol(SkillID)
+Alloc(GetSkillID, 128)
+Alloc(SkillID, 04)
+
+GetSkillID:
+xor esi,esi
+mov [SkillID],ecx
+cmp byte ptr [ebp+28],00
+jmp 01EE59FF
+
+01EE59F9:
+jmp GetSkillID
+nop
+
+[DISABLE]
+01EE59F9:
+xor esi,esi
+cmp byte ptr [ebp+28],00
+
+
+UnRegisterSymbol(SkillID)
+DeAlloc(GetSkillID)
+DeAlloc(SkillID)

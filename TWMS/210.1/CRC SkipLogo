@@ -1,0 +1,10 @@
+// TwMS 210.1 CRC SkipLogo
+// Author : 不詳
+//跳過Logo
+[ENABLE]
+01206901:
+DB 75
+
+[DISABLE]
+01206901: 
+DB 74

@@ -1,0 +1,35 @@
+//CMS v155 ICS 全圖吸物
+[Enable]
+Alloc(ItemVac,128)
+Label(SetItemXY)
+
+ItemVac:
+CMP [ESP],00FFE76D
+JE SetItemXY
+NOP
+CMP [ESP],00FF383B
+JNE PtInRect
+NOP
+MOV [ESP],00FF3850
+JMP PtInRect
+
+SetItemXY:
+PUSH EAX
+PUSH EBX
+MOV  EBX,[EBP-34] 
+MOV  EAX,[ESP+10] 
+MOV  [EBX],EAX   
+MOV  EAX,[ESP+14] 
+MOV  [EBX+04],EAX 
+POP  EBX
+POP  EAX
+Mov [Esp],00FFE7C4
+Jmp PtInRect
+
+030cdeec:
+DD ItemVac
+
+[Disable]
+030cdeec:
+DD PtInRect
+DeAlloc(ItemVac)

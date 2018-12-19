@@ -1,0 +1,4 @@
+//TwMS 211.2 Pointer 取消黑屏
+Address:03716840
+Offset:7C1C
+Value:256 or -1

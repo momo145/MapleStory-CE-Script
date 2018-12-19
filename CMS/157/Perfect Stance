@@ -1,0 +1,15 @@
+[ENABLE]
+0224191A: //85 F6 75 05 39 ? 10 74
+xor esi,esi
+nop
+nop
+
+02241921: //address of JE below
+db EB
+
+[DISABLE]
+0224191A:
+db 85 F6 75 05
+
+02241921:
+db 74

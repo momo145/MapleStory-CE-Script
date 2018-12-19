@@ -1,0 +1,7 @@
+[ENABLE]
+010DF746:
+mov eax,1
+
+[DISABLE]
+010DF746: // E8 ? ? ? ? 83 C4 ? C3 CC 81 C1 ? ? 00 00 E8 ? ? ? ? C1 E8 ? 83 E0 ? [FIRST]
+call 0091D630 // update

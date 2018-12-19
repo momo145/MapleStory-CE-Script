@@ -1,0 +1,9 @@
+//CMSv155 CRC 人物定位SS 
+
+[Enable]
+00BF0244:
+DB eb
+
+[Disable]
+00BF0244:
+DB 74

@@ -1,0 +1,11 @@
+//TwMs v212.2 POINTER 人物資訊
+人物基址=037AA394
+
+//人物呼吸
+Offset:07F4
+
+//人物動作
+Offset:07F8
+
+//技能動作
+Offset:07FC

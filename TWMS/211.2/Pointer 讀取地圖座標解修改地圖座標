@@ -1,0 +1,7 @@
+//TwMS v211.2 Pointer 讀取地圖座標解修改地圖座標
+//Author: ke90927
+Address:039972F8 
+Offset左邊：C
+Offset頂邊：10
+Offset右邊：14 
+Offset底邊：18

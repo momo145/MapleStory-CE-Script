@@ -1,0 +1,8 @@
+//TwMs 211.2 全技能推怪 [CRC]
+//Author:yutsaihsieh
+[Enable]
+021016AC:
+DB 0F 85
+[Disable]
+021016AC:
+DB 0F 84

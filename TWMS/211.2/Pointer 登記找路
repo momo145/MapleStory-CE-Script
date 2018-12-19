@@ -1,0 +1,20 @@
+// TwMS v211.2 登記找路 Pointer
+Base: 03716840
+TargetMapID: E0  (Default: 999999999)
+NextMapID: E4    (Default: 999999999)
+Status: E8       (On: 1 , Off: 0)
+
+[Base]          //0240CC8D - 8B 3D 40687103        - mov edi,[03716840] { [09EFFBBC] }
+[Base]+E0       //024F607D - 89 87 E0000000        - mov [edi+000000E0],eax
+[Base]+E4       // 
+[Base]+E8       // 
+
+
+// 傳送點資訊
+Base: 03733EEC (人物基址)
+X: 1443C     (Default: 999999)
+Y: 14440      (Default: 999999)
+
+[Base]          //
+[Base]+1443C    //01FFC6EC - C7 83 3C440100 3F420F00 - mov [ebx+0001443C],000F423F { 999999 }
+[Base]+14440   //01FFC6F6 - C7 83 40440100 3F420F00 - mov [ebx+00014440],000F423F { 999999 }

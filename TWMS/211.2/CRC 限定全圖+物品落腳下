@@ -1,0 +1,35 @@
+//TwMS v211.2 CRC 限定全圖+物品落腳下 
+//Update at v197.1 by neilwaker
+
+[Enable]
+Alloc(FullMapAttack,128)
+RegisterSymbol(FullMapAttack)
+
+FullMapAttack:
+mov ecx,[03733EEC]
+add ecx,04
+lea eax,[ebp-000000D4]
+push eax
+call 0200C020  
+lea eax,[ebp-000000D4]
+push eax
+jmp 012E9057
+
+012E9475:
+nop
+nop
+nop
+
+012E9050:
+jmp FullMapAttack
+
+[Disable]
+012E9050: 
+lea eax,[ebp-000000D4]
+
+012E9475:
+push 00
+ret 
+
+DeAlloc(FullMapAttack)
+UnRegisterSymbol(FullMapAttack)
