@@ -1,0 +1,11 @@
+define(IgnoreSkillCooldowns,02658BA0)
+// FF 75 0C E8 ? ? 09 00 5E 5D C2 08 00 FF 75 0C E8 [Second Result] [Follow Call]
+// 55 8B EC 83 ? ? 53 56 57 89 ? ? E9 ? ? ? ? 50 [4th from last]
+[enable]
+IgnoreSkillCooldowns: //Ignore Skill Cooldown (Some Skills)
+ret 04
+
+[disable]
+IgnoreSkillCooldowns:
+push ebp
+mov ebp,esp
