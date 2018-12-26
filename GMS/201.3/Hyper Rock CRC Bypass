@@ -1,0 +1,15 @@
+//Spoofs a Hyper Rock CRC. THIS DOES NOT ALLOW FREE TELEPORTATION.
+//How to use:
+//1. Enter map ID.
+//2. Enable Hyper Rock CRC Bypass
+//3. Teleport to map using a Hyper Rock
+
+define(Map_ID,#000000)  //Change map ID here
+
+[Enable]
+029AE48C:
+mov [rbx+0000966C],Map_ID
+
+[Disable]
+029AE48C: //81 ? ? ? 00 00 FF C9 9A 3B 8D
+cmp [rbx+0000966C],3B9AC9FF

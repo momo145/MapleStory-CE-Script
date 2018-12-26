@@ -1,0 +1,22 @@
+//Automatically sets your character to offline mode on login.
+//*Might not work without auto login / sometimes*
+
+[Enable]
+alloc(hook,64)
+label(return)
+
+01427898:
+jmp hook
+nop
+return:
+
+hook:
+call 0242DEA0 // CWvsContext::SendOfflineRequest 8B 0D ? ? ? ? E9 ? ? ? ? CC CC CC CC CC 8B 0D ? ? ? ? E9 [SECOND]
+db 59 5F 5E 5B 8B E5
+jmp return
+
+[Disable]
+dealloc(hook)
+
+01427898: //onEnterGame 89 87 ? ? 00 00 E8 ? ? ? ? 8B 4D F4 64 89 0D 00 00 00 00 59 5F 5E 5B 8B E5 5D C3 POP ECX BELOW [LAST]
+db 59 5F 5E 5B 8B E5 5D
