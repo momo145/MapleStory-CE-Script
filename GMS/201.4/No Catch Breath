@@ -1,0 +1,10 @@
+//Your character will not need to catch its breath.
+//*This is client sided for many skills, so you may still be required to catch breath!*
+
+[Enable]
+00FD4C46: // 79 ? 8B ? C7 ? ? ? 00 00 00 00 00 00 E8
+db 78
+
+[Disable]
+00FD4C46:
+db 79

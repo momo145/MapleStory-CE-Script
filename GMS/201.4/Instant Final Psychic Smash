@@ -1,0 +1,11 @@
+//Kinesis will perform it's final stage of Psychic Smash
+
+define(FinalSmash,02599E36) //74 ? 0F 1F ? ? 00 00 00 00 FF (second)
+
+[Enable]
+FinalSmash:
+db 75
+
+[Disable]
+FinalSmash:
+db 74

@@ -1,0 +1,10 @@
+//Evan will perform Dragon Breath alongside certain dragon skills e.g. Dragon Dive
+
+[enable]
+0121A17E:
+db 0F 84
+
+[disable]
+0121A17E: //0f 85 ? ? ? ? ff 15 ? ? ? ? 8b c3
+db 0F 85
+

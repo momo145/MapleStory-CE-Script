@@ -1,0 +1,39 @@
+//Familiar automaticlly use it's skill after delay.
+//Only familiar has skill work. e.g. Jr.Boojie recovers MP,  Mutant Snail recivers HP&MP
+//Can't change channel if setting a low delay.
+
+define(Delay, #100) //set delay
+
+[ENABLE]
+Alloc(Hook,128)
+Alloc(Timer,4)
+Label(Normal)
+Label(Return)
+
+Timer:
+dd 00
+
+Hook:
+cmp [Timer],Delay
+jne Normal
+mov [esi+170],eax
+mov [Timer],0
+jmp Return
+
+Normal:
+inc [Timer]
+cmp [esi+170],eax
+jmp Return
+
+// 39 86 ? ? 00 00 7F ? 8B CE E8 [new AOB?]
+012915D5: //  39 ?? ? ? 00 00 7F ? 8B CE E8 ? ? ? ? 8B ?? ? ? 00 00 [first]
+jmp Hook
+nop
+Return:
+
+[DISABLE]
+012915D5:
+cmp [esi+170],eax
+
+dealloc(Hook)
+dealloc(Timer)

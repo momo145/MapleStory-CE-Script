@@ -1,0 +1,68 @@
+[ENABLE]
+alloc(GetMobXY,128)
+alloc(MobX,4)
+alloc(MobY,4)
+alloc(Teleport,256)
+registersymbol(MobX)
+registersymbol(MobY)
+label(GetMobXY_Return)
+label(Return)
+label(Teleport_End)
+
+Teleport:
+mov esi,[036D9808] // CUserLocal: 8B 3D ? ? ? ? 8B CF F3 [address inside brackets]
+lea ecx,[esi+04]
+mov eax,[esi+04]
+mov eax,[eax+20]
+call eax
+test eax,eax
+je Teleport_End
+push [MobY]
+push [MobX]
+push 00
+mov ecx,eax
+call 00D2C630 // 55 8B EC ? ? 10 ? FF ? 10 8D ? 10 FF ? 0C 56 FF 50 40 85 C0 79 0C 68 ? ? ? ? ? ? E8 ? ? ? ? 5E [first]
+jmp Return
+
+Teleport_End:
+ret
+
+GetMobXY:
+push eax
+mov eax,[ecx+910] // 89 87 ? ? ? ? 8D ? ? ? ? ? 8B ? ? 89 ? ? 89 ? ? 8A
+mov [MobX],eax
+add [MobX], #-70 //mob relative position x
+mov eax,[ecx+910+4] // OFFSET ABOVE + 0x4
+mov [MobY],eax
+add [MobY], #0 //mob relative position y
+pop eax
+
+//Original
+push ebp
+mov ebp,esp
+push -01
+jmp GetMobXY_Return
+
+0284D260: // 55 8B EC 6A ? 68 ? ? ? ? 64 ? ? ? ? ? 50 83 ? ? 56 57  A1 ? ? ? ? 33 C5 50 8D ? ? 64 ? ? ? ? ? 8B F9 89 ? ? 8B ? FF ? ? FF
+jmp GetMobXY
+GetMobXY_Return:
+
+012C5E8E:
+jmp Teleport
+Return:
+
+[DISABLE]
+0284D260:
+push ebp
+mov ebp,esp
+push -01
+
+012C5E8E: //[some call above] 3D B8 0B 00 00 76 ? 6A
+call 012DE030
+
+dealloc(GetMobXY,128)
+dealloc(MobX,4)
+dealloc(MobY,4)
+dealloc(Teleport)
+unregistersymbol(MobX)
+unregistersymbol(MobY)
