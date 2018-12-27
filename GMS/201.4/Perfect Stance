@@ -1,17 +1,17 @@
 //Your character will not be knocked back by enemy attacks.
 
 [ENABLE]
-025D6170: //85 F6 75 05 39 ? 10 74
+025D61A0: //85 F6 75 05 39 ? 10 74
 xor esi,esi
 nop
 nop
 
-025D6177: //address of JE below
+025D61A7: //address of JE below
 db EB
 
 [DISABLE]
-025D6170:
+025D61A0:
 db 85 F6 75 05
 
-025D6177:
+025D61A7:
 db 74
