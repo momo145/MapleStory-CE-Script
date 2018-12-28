@@ -1821,7 +1821,7 @@ dealloc(Hook)
           <ID>113</ID>
           <Description>"Item Filter"</Description>
           <LastState/>
-          <Color>C0C0C0</Color>
+          <Color>000000</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 alloc(ItemFilter,256)
@@ -1840,358 +1840,13 @@ Mesos:
 dd #0 // Minimum meso
 
 Mode:
-dd #1 // 0 = Accept, 1 = reject
+dd #0 // 0 = Accept, 1 = reject
 
 ItemList:
 //Credit TymeGyzmo for list
 
 //Add filter like below
 //dd #itemID
-
-dd #4006000 // The Magic Rock
-dd #4006001 // The Summoning Rock
-dd #4001094 // Nine Spirit's Egg
-dd #2060000 // Arrow for Bow
-dd #2060001 // Bronze Arrow for Bow
-dd #2060002 // Steel Arrow for Bow
-dd #2060003 // Red Arrow for Bow
-dd #2060004 // Diamond Arrow for Bow
-dd #2060008 // Quality Arrow for Bow
-dd #2060009 // Strong Arrow for Bow
-dd #2060010 // Sharp Arrow for Bow
-dd #2060011 // Titanium Arrow for Bow
-dd #2060013 // White Gold Medium Arrows
-dd #2061000 // Arrow for Crossbow
-dd #2061001 // Bronze Arrow for Crossbow
-dd #2061002 // Steel Arrow for Crossbow
-dd #2061003 // Blue Arrow for Crossbow
-dd #2061004 // Diamond Arrow for Crossbow
-dd #2061006 // Quality Arrow for Crossbow
-dd #2061007 // Strong Arrow for Crossbow
-dd #2061008 // Sharp Arrow for Crossbow
-dd #2061009 // Titanium Arrow for Crossbow
-dd #2510165 // Sharp Arrow for Bow Recipe
-dd #2510166 // Sharp Arrow for Crossbow Recipe
-dd #2510167 // Titanium Arrow for Bow Recipe
-dd #2510168 // Titanium Arrow for Crossbow Recipe
-dd #2510568 // Amaterasu's Nimbus Sword Recipe
-dd #2510569 // Amaterasu's Weeping Spirit Sword Recipe
-dd #2510570 // Amaterasu's Axe of a Thousand Blades Recipe
-dd #2510571 // Amaterasu's Smoldering Spirit Axe Recipe
-dd #2510572 // Amaterasu's Golden Slice Recipe
-dd #2510573 // Amaterasu's Mace of Ruin Recipe
-dd #2510574 // Amaterasu's Final Wind Recipe
-dd #2510575 // Amaterasu's Pelting Rain Recipe
-dd #2510576 // Amaterasu's Muramasa Recipe
-dd #2510577 // Oyamatsumi's Fire Spirit Bow Recipe
-dd #2510578 // Oyamatsumi's Piercing Insight Recipe
-dd #2510579 // Oyamatsumi's Dragon Bow Recipe
-dd #2510580 // Ame-no-Uzume's Crooked Soul Staff Recipe
-dd #2510581 // Ame-no-Uzume's Sinister Spirit Hand Recipe
-dd #2510582 // Ame-no-Uzume's Red Flower Recipe
-dd #2510583 // Tsukuyomi's Execution Sword Recipe
-dd #2510584 // Tsukuyomi's Fist of Malice Recipe
-dd #2510586 // Tsukuyomi's Wraith Hand Recipe
-dd #2510587 // Susano-o's Baleful Blaster Recipe
-dd #2510588 // Susano-o's Bloodstained Sword Recipe
-dd #2510589 // Susano-o's Solar Cannon Recipe
-dd #2510590 // Amaterasu's Helm Recipe
-dd #2510591 // Amaterasu's Gloves Recipe
-dd #2510592 // Amaterasu's Shoes Recipe
-dd #2510593 // Amaterasu's Armor Recipe
-dd #2510594 // Amaterasu's Cape Recipe
-dd #2510595 // Oyamatsumi's Helm Recipe
-dd #2510596 // Oyamatsumi's Gloves Recipe
-dd #2510597 // Oyamatsumi's Shoes Recipe
-dd #2510598 // Oyamatsumi's Armor Recipe
-dd #2510599 // Oyamatsumi's Cape Recipe
-dd #2510600 // Ame-no-Uzume's Helm Recipe
-dd #2510601 // Ame-no-Uzume's Gloves Recipe
-dd #2510602 // Ame-no-Uzume's Shoes Recipe
-dd #2510603 // Ame-no-Uzume's Armor Recipe
-dd #2510604 // Ame-no-Uzume's Cape Recipe
-dd #2510605 // Tsukuyomi's Helm Recipe
-dd #2510606 // Tsukuyomi's Gloves Recipe
-dd #2510607 // Tsukuyomi's Shoes Recipe
-dd #2510608 // Tsukuyomi's Armor Recipe
-dd #2510609 // Tsukuyomi's Cape Recipe
-dd #2510610 // Susano-o's Helm Recipe
-dd #2510611 // Susano-o's Gloves Recipe
-dd #2510612 // Susano-o's Shoes Recipe
-dd #2510613 // Susano-o's Armor Recipe
-dd #2510614 // Susano-o's Cape Recipe
-dd #2510723 // Ame-no-Uzume's Scepter Recipe
-dd #2510771 // Ame-no-Uzume's Shining Rod Recipe
-dd #2510772 // Susano-o Rainbow Shooter Recipe
-dd #2511159 // Amaterasu's Belt Recipe
-dd #2511160 // Amaterasu's Epaulet Recipe
-dd #2511161 // Oyamatsumi's Belt Recipe
-dd #2511162 // Oyamatsumi's Epaulet Recipe
-dd #2511163 // Ame-no-Uzume's Belt Recipe
-dd #2511164 // Ame-no-Uzume's Epaulet Recipe
-dd #2511165 // Tsukuyomi's Belt Recipe
-dd #2511166 // Tsukuyomi's Epaulet Recipe
-dd #2511167 // Susano-o's Belt Recipe
-dd #2511168 // Susano-o's Epaulet Recipe
-dd #2512000 // Strength Potion III Recipe
-dd #2512001 // Strength Potion IV Recipe
-dd #2512002 // Strength Potion V Recipe
-dd #2512003 // Strength Potion VI Recipe
-dd #2512004 // Strength Potion VII Recipe
-dd #2512005 // Strength Potion VIII Recipe
-dd #2512006 // Strength Potion IX Recipe
-dd #2512007 // Strength Potion X Recipe
-dd #2512008 // Dexterity Potion III Recipe
-dd #2512009 // Dexterity Potion IV Recipe
-dd #2512010 // Dexterity Potion V Recipe
-dd #2512011 // Dexterity Potion VI Recipe
-dd #2512012 // Dexterity Potion VII Recipe
-dd #2512013 // Dexterity Potion VIII Recipe
-dd #2512014 // Dexterity Potion IX Recipe
-dd #2512015 // Dexterity Potion X Recipe
-dd #2512016 // Intelligence Potion III Recipe
-dd #2512017 // Intelligence Potion IV Recipe
-dd #2512018 // Intelligence Potion V Recipe
-dd #2512019 // Intelligence Potion VI Recipe
-dd #2512020 // Intelligence Potion VII Recipe
-dd #2512021 // Intelligence Potion VIII Recipe
-dd #2512022 // Intelligence Potion IX Recipe
-dd #2512023 // Intelligence Potion X Recipe
-dd #2512024 // Luck Potion III Recipe
-dd #2512025 // Luck Potion IV Recipe
-dd #2512026 // Luck Potion V Recipe
-dd #2512027 // Luck Potion VI Recipe
-dd #2512028 // Luck Potion VII Recipe
-dd #2512029 // Luck Potion VIII Recipe
-dd #2512030 // Luck Potion IX Recipe
-dd #2512031 // Luck Potion X Recipe
-dd #2512032 // Attack Potion I Recipe
-dd #2512033 // Attack Potion II Recipe
-dd #2512034 // Attack Potion III Recipe
-dd #2512035 // Attack Potion IV Recipe
-dd #2512036 // Attack Potion V Recipe
-dd #2512037 // Magic Attack Potion I Recipe
-dd #2512038 // Magic Attack Potion II Recipe
-dd #2512039 // Magic Attack Potion III Recipe
-dd #2512040 // Magic Attack Potion IV Recipe
-dd #2512041 // Magic Attack Potion V Recipe
-dd #2512042 // Special Mano Transform Potion Recipe
-dd #2512043 // Special Deo Transform Potion Recipe
-dd #2512044 // Special King Clang Transform Potion Recipe
-dd #2512045 // Special Zeno Transform Potion Recipe
-dd #2512046 // Special Eliza Transform Potion Recipe
-dd #2512047 // Special Balrog Transform Potion Recipe
-dd #2512048 // Special Griffey Transform Potion Recipe
-dd #2512049 // Advanced Health Potion Recipe
-dd #2512050 // Advanced Health Pill Recipe
-dd #2512051 // Advanced Mana Potion Recipe
-dd #2512052 // Advanced Mana Pill Recipe
-dd #2512053 // Health Boost Potion Recipe
-dd #2512054 // Mana Boost Potion Recipe
-dd #2512055 // Blessing Potion Recipe
-dd #2512056 // Strength Boost Potion Recipe
-dd #2512057 // Dexterity Boost Potion Recipe
-dd #2512058 // Intelligence Boost Potion Recipe
-dd #2512059 // Luck Boost Potion Recipe
-dd #2512060 // Advanced Health Boost Potion Recipe
-dd #2512061 // Advanced Mana Boost Potion Recipe
-dd #2512062 // Advanced Blessing Potion Recipe
-dd #2512063 // Advanced Strength Boost Potion Recipe
-dd #2512064 // Advanced Dexterity Boost Potion Recipe
-dd #2512065 // Advanced Intelligence Boost Potion Recipe
-dd #2512066 // Advanced Luck Boost Potion Recipe
-dd #2512067 // Basic Hero Potion Recipe
-dd #2512068 // Advanced Hero Potion Recipe
-dd #2512069 // Health Pill (1000) Recipe
-dd #2512070 // Health Pill (1500) Recipe
-dd #2512071 // Health Pill (2000) Recipe
-dd #2512072 // Health Pill (2500) Recipe
-dd #2512073 // Health Pill (3000) Recipe
-dd #2512074 // Health Pill (3500) Recipe
-dd #2512075 // Health Pill (4000) Recipe
-dd #2512076 // Health Pill (5000) Recipe
-dd #2512077 // Health Pill (6000) Recipe
-dd #2512078 // Health Pill (7000) Recipe
-dd #2512079 // Mana Pill (1000) Recipe
-dd #2512080 // Mana Pill (1500) Recipe
-dd #2512081 // Mana Pill (2000) Recipe
-dd #2512082 // Mana Pill (2500) Recipe
-dd #2512083 // Mana Pill (3000) Recipe
-dd #2512084 // Mana Pill (3500) Recipe
-dd #2512085 // Mana Pill (4000) Recipe
-dd #2512086 // Mana Pill (5000) Recipe
-dd #2512087 // Mana Pill (6000) Recipe
-dd #2512088 // Mana Pill (7000) Recipe
-dd #2512089 // Advanced Strength Potion I Recipe
-dd #2512090 // Advanced Strength Potion II Recipe
-dd #2512091 // Advanced Strength Potion III Recipe
-dd #2512092 // Advanced Strength Potion IV Recipe
-dd #2512093 // Advanced Strength Potion V Recipe
-dd #2512094 // Advanced Strength Potion VI Recipe
-dd #2512095 // Advanced Strength Potion VII Recipe
-dd #2512096 // Advanced Strength Potion VIII Recipe
-dd #2512097 // Advanced Strength Potion IX Recipe
-dd #2512098 // Advanced Strength Potion X Recipe
-dd #2512099 // Advanced Dexterity Potion I Recipe
-dd #2512100 // Advanced Dexterity Potion II Recipe
-dd #2512101 // Advanced Dexterity Potion III Recipe
-dd #2512102 // Advanced Dexterity Potion IV Recipe
-dd #2512103 // Advanced Dexterity Potion V Recipe
-dd #2512104 // Advanced Dexterity Potion VI Recipe
-dd #2512105 // Advanced Dexterity Potion VII Recipe
-dd #2512106 // Advanced Dexterity Potion VIII Recipe
-dd #2512107 // Advanced Dexterity Potion IX Recipe
-dd #2512108 // Advanced Dexterity Potion X Recipe
-dd #2512109 // Advanced Intelligence Potion I Recipe
-dd #2512110 // Advanced Intelligence Potion II Recipe
-dd #2512111 // Advanced Intelligence Potion III Recipe
-dd #2512112 // Advanced Intelligence Potion IV Recipe
-dd #2512113 // Advanced Intelligence Potion V Recipe
-dd #2512114 // Advanced Intelligence Potion VI Recipe
-dd #2512115 // Advanced Intelligence Potion VII Recipe
-dd #2512116 // Advanced Intelligence Potion VIII Recipe
-dd #2512117 // Advanced Intelligence Potion IX Recipe
-dd #2512118 // Advanced Intelligence Potion X Recipe
-dd #2512119 // Advanced Luck Potion I Recipe
-dd #2512120 // Advanced Luck Potion II Recipe
-dd #2512121 // Advanced Luck Potion III Recipe
-dd #2512122 // Advanced Luck Potion IV Recipe
-dd #2512123 // Advanced Luck Potion V Recipe
-dd #2512124 // Advanced Luck Potion VI Recipe
-dd #2512125 // Advanced Luck Potion VII Recipe
-dd #2512126 // Advanced Luck Potion VIII Recipe
-dd #2512127 // Advanced Luck Potion IX Recipe
-dd #2512128 // Advanced Luck Potion X Recipe
-dd #2512129 // Advanced Attack Potion I Recipe
-dd #2512130 // Advanced Attack Potion II Recipe
-dd #2512131 // Advanced Attack Potion III Recipe
-dd #2512132 // Advanced Attack Potion IV Recipe
-dd #2512133 // Advanced Attack Potion V Recipe
-dd #2512134 // Advanced Magic Attack Potion I Recipe
-dd #2512135 // Advanced Magic Attack Potion II Recipe
-dd #2512136 // Advanced Magic Attack Potion III Recipe
-dd #2512137 // Advanced Magic Attack Potion IV Recipe
-dd #2512138 // Advanced Magic Attack Potion V Recipe
-dd #2512139 // Strength Pill I Recipe
-dd #2512140 // Strength Pill II Recipe
-dd #2512141 // Strength Pill III Recipe
-dd #2512142 // Strength Pill IV Recipe
-dd #2512143 // Strength Pill V Recipe
-dd #2512144 // Strength Pill VI Recipe
-dd #2512145 // Strength Pill VII Recipe
-dd #2512146 // Strength Pill VIII Recipe
-dd #2512147 // Strength Pill IX Recipe
-dd #2512148 // Strength Pill X Recipe
-dd #2512149 // Advanced Strength Pill I Recipe
-dd #2512150 // Advanced Strength Pill II Recipe
-dd #2512151 // Advanced Strength Pill III Recipe
-dd #2512152 // Advanced Strength Pill IV Recipe
-dd #2512153 // Advanced Strength Pill V Recipe
-dd #2512154 // Advanced Strength Pill VI Recipe
-dd #2512155 // Advanced Strength Pill VII Recipe
-dd #2512156 // Advanced Strength Pill VIII Recipe
-dd #2512157 // Advanced Strength Pill IX Recipe
-dd #2512158 // Advanced Strength Pill X Recipe
-dd #2512159 // Dexterity Pill I Recipe
-dd #2512160 // Dexterity Pill II Recipe
-dd #2512161 // Dexterity Pill III Recipe
-dd #2512162 // Dexterity Pill IV Recipe
-dd #2512163 // Dexterity Pill V Recipe
-dd #2512164 // Dexterity Pill VI Recipe
-dd #2512165 // Dexterity Pill VII Recipe
-dd #2512166 // Dexterity Pill VIII Recipe
-dd #2512167 // Dexterity Pill IX Recipe
-dd #2512168 // Dexterity Pill X Recipe
-dd #2512169 // Advanced Dexterity Pill I Recipe
-dd #2512170 // Advanced Dexterity Pill II Recipe
-dd #2512171 // Advanced Dexterity Pill III Recipe
-dd #2512172 // Advanced Dexterity Pill IV Recipe
-dd #2512173 // Advanced Dexterity Pill V Recipe
-dd #2512174 // Advanced Dexterity Pill VI Recipe
-dd #2512175 // Advanced Dexterity Pill VII Recipe
-dd #2512176 // Advanced Dexterity Pill VIII Recipe
-dd #2512177 // Advanced Dexterity Pill IX Recipe
-dd #2512178 // Advanced Dexterity Pill X Recipe
-dd #2512179 // Intelligence Pill I Recipe
-dd #2512180 // Intelligence Pill II Recipe
-dd #2512181 // Intelligence Pill III Recipe
-dd #2512182 // Intelligence Pill IV Recipe
-dd #2512183 // Intelligence Pill V Recipe
-dd #2512184 // Intelligence Pill VI Recipe
-dd #2512185 // Intelligence Pill VII Recipe
-dd #2512186 // Intelligence Pill VIII Recipe
-dd #2512187 // Intelligence Pill IX Recipe
-dd #2512188 // Intelligence Pill X Recipe
-dd #2512189 // Advanced Intelligence Pill I Recipe
-dd #2512190 // Advanced Intelligence Pill II Recipe
-dd #2512191 // Advanced Intelligence Pill III Recipe
-dd #2512192 // Advanced Intelligence Pill IV Recipe
-dd #2512193 // Advanced Intelligence Pill V Recipe
-dd #2512194 // Advanced Intelligence Pill VI Recipe
-dd #2512195 // Advanced Intelligence Pill VII Recipe
-dd #2512196 // Advanced Intelligence Pill VIII Recipe
-dd #2512197 // Advanced Intelligence Pill IX Recipe
-dd #2512198 // Advanced Intelligence Pill X Recipe
-dd #2512199 // Luck Pill I Recipe
-dd #2512200 // Luck Pill II Recipe
-dd #2512201 // Luck Pill III Recipe
-dd #2512202 // Luck Pill IV Recipe
-dd #2512203 // Luck Pill V Recipe
-dd #2512204 // Luck Pill VI Recipe
-dd #2512205 // Luck Pill VII Recipe
-dd #2512206 // Luck Pill VIII Recipe
-dd #2512207 // Luck Pill IX Recipe
-dd #2512208 // Luck Pill X Recipe
-dd #2512209 // Advanced Luck Pill I Recipe
-dd #2512210 // Advanced Luck Pill II Recipe
-dd #2512211 // Advanced Luck Pill III Recipe
-dd #2512212 // Advanced Luck Pill IV Recipe
-dd #2512213 // Advanced Luck Pill V Recipe
-dd #2512214 // Advanced Luck Pill VI Recipe
-dd #2512215 // Advanced Luck Pill VII Recipe
-dd #2512216 // Advanced Luck Pill VIII Recipe
-dd #2512217 // Advanced Luck Pill IX Recipe
-dd #2512218 // Advanced Luck Pill X Recipe
-dd #2512219 // Defense Pill I Recipe
-dd #2512220 // Defense Pill II Recipe
-dd #2512221 // Defense Pill III Recipe
-dd #2512222 // Defense Pill IV Recipe
-dd #2512223 // Defense Pill V Recipe
-dd #2512224 // Defense Pill VI Recipe
-dd #2512225 // Defense Pill VII Recipe
-dd #2512226 // Defense Pill VIII Recipe
-dd #2512227 // Defense Pill IX Recipe
-dd #2512228 // Defense Pill X Recipe
-dd #2512229 // Advanced Defense Pill I Recipe
-dd #2512230 // Advanced Defense Pill II Recipe
-dd #2512231 // Advanced Defense Pill III Recipe
-dd #2512232 // Advanced Defense Pill IV Recipe
-dd #2512233 // Advanced Defense Pill V Recipe
-dd #2512234 // Advanced Defense Pill VI Recipe
-dd #2512235 // Advanced Defense Pill VII Recipe
-dd #2512236 // Advanced Defense Pill VIII Recipe
-dd #2512237 // Advanced Defense Pill IX Recipe
-dd #2512238 // Advanced Defense Pill X Recipe
-dd #2512239 // Attack Pill I Recipe
-dd #2512240 // Attack Pill II Recipe
-dd #2512241 // Attack Pill III Recipe
-dd #2512242 // Attack Pill IV Recipe
-dd #2512243 // Attack Pill V Recipe
-dd #2512244 // Advanced Attack Pill I Recipe
-dd #2512245 // Advanced Attack Pill II Recipe
-dd #2512246 // Advanced Attack Pill III Recipe
-dd #2512247 // Advanced Attack Pill IV Recipe
-dd #2512248 // Advanced Attack Pill V Recipe
-dd #2512249 // Magic Attack Pill I Recipe
-dd #2512250 // Magic Attack Pill II Recipe
-dd #2512251 // Magic Attack Pill III Recipe
-dd #2512252 // Magic Attack Pill IV Recipe
-dd #2512253 // Magic Attack Pill V Recipe
-dd #2512254 // Advanced Magic Attack Pill I Recipe
-dd #2512255 // Advanced Magic Attack Pill II Recipe
-dd #2512256 // Advanced Magic Attack Pill III Recipe
-dd #2512257 // Advanced Magic Attack Pill IV Recipe
-dd #2512258 // Advanced Magic Attack Pill V Recipe
 
 dd 00 // End of list
 
@@ -2204,7 +1859,7 @@ mov edx,ItemList
 jmp RejectOrAccept
 
 FilterMesos:
-mov [edi+50],0
+mov eax,0
 jmp End
 
 RejectOrAccept:
@@ -2236,18 +1891,24 @@ mov eax,0
 
 End:
 pop edx
-mov ecx,ebx // Original Opcode
-mov [edi+50],eax // Original Opcode
+mov [ebp-34],eax
+inc ecx
+mov eax,939A85C5
 jmp Return
 
-0113689C:
+0122EFAD:
 jmp ItemFilter
+nop
+nop
+nop
+nop
 Return:
 
 [DISABLE]
-0113689C: // f3 ? ? ? ? ? ? ? f3 ? ? ? ? ? ? ? e8 ? ? ? ? 8b ? 89 ? ? e8 below
-mov ecx,ebx
-mov [edi+50],eax
+0122EFAD: // F3 ? ? ? ? ? ? ? F3 ? ? ? ? ? ? ? E8 ? ? ? ? 8B 0D ? ? ? ? 89 ? ? ? B8 below
+mov [ebp-34],eax
+inc ecx
+mov eax,939A85C5
 
 dealloc(ItemFilter)
 dealloc(ItemList)
