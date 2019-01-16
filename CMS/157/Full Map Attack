@@ -1,0 +1,14 @@
+[ENABLE]
+01551654: // MsInterSectRect
+db EB
+
+02640E46:
+db EB
+
+[DISABLE]
+01551654: //  75 ? 84 ? 0F ? ? ? ? 00 8B ? ? 8B
+db 75
+
+02640E46: //  74 ? C7 87 ? ? 00 00 00 00 00 00 8B 0D
+//68 EA BA C4 04 FF [2 je above]
+db 74
