@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="27">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"God Mode"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[enable]
+0238C050:
+db C2 30 00
+
+[disable]
+//E8 ? ? ? ? 8D ? ? E8 ? ? ? ? 8B ? ? 64 ? ? ? ? ? ? 59 5E 8B ? 5D C2 1C 00 [follow call]
+0238C050: //E8 ? ? ? ? EB ? 6A 00 6A 01 6A 00 6A 01 [Follow call]
+db 55 8B EC
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Boss God Mode"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+011B02A6:
+mov eax,1
+
+[DISABLE]
+011B02A6: // E8 ? ? ? ? 83 C4 ? C3 CC 81 C1 ? ? 00 00 E8 ? ? ? ? C1 E8 ? 83 E0 ? [FIRST]
+call 00955890 // update
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>113</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"Full Map Attack"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+01643BED: // MsInterSectRect
+db EB
+
+027B18E6:
+db EB
+
+[DISABLE]
+01643BED: //  75 ? 84 ? 0F ? ? ? ? 00 8B ? ? 8B
+db 75
+
+027B18E6: //  74 ? C7 87 ? ? 00 00 00 00 00 00 8B 0D
+//68 EA BA C4 04 FF [2 je above]
+db 74
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"Skill Inject"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>//override
+[ENABLE]
+alloc(skill_id_hook,128)
+alloc(timer,4)
+label(skill_id_return)
+label(normal)
+define(skill_id,#00000000) //Change #00000000 to your skillID
+define(skill_delay,#10)    //Change delay
+
+timer:
+dd 00
+
+02476DAB: //[1st addy]
+db 90 90 90 90 90 90
+
+02476DB7: //[2nd addy]
+db 90 90 90 90 90 90
+
+02476DA4: //[3rd addy]
+jmp skill_id_hook
+nop
+nop
+skill_id_return:
+
+skill_id_hook:
+call GetTickCount
+mov edx,eax
+sub edx, [timer]
+cmp edx,skill_delay
+jl normal
+mov [timer],eax
+mov [esi+00015A48],skill_id //3rd addy dword ptr
+jmp skill_id_return
+normal:
+cmp dword ptr [esi+00015A48],00 //3rd addy dword ptr
+jmp skill_id_return
+
+02476E2B:  //[4th addy]
+db 90 E9
+
+02476F50: //[5th addy]
+db 90 90 90 90 90 90
+
+02476F5D: //[6th addy]
+jmp 02476F90 //[7th addy] 81 BE ? ? ? ? E2 FE 7E 01 8B CE 75 ? 6A 00 6A 00 6A 04 57 FF ? ? E8 ? ? ? ? 5B 5F C7 ? ? ? ? ? 00 00 00 00 5E ?
+dw 90 90
+
+[Disable]
+02476DAB: //[1st addy] 0F 84 ? ? ? ? 2B BE ? ? ? ? 0F 88 ? ? ? ? 8B 0D ? ? ? ? 85 C9 74 ? 8B ? ? 83 ? ? 68 ? ? ? ? FF 50 6C 85 C0
+db 0F 84 CD 02 00 00
+
+02476DB7: //[2nd addy] JS Below first addy^
+db 0F 88 C1 02 00 00
+
+02476DA4: //[3rd addy] cmp dword ptr above first addy^^
+cmp dword ptr [esi+00015A48],00 //update ptr in brackets here as well
+
+02476E2B: //[4th addy] 0F 84 ? ? ? ? 8B 06 8B CE FF 50 ? 3D 10 27 00 00 74 ? 3D 74 27 00 00 74 ? 3D 7E 27 00 00 74 ? 3D 7F 27 00 00 74 ?
+db 0F 84 A4 00 00 00
+
+02476F50: //[5th addy] 0F 87 ? ? ? ? 0F B6 ? ? ? ? ? FF 24 ? ? ? ? ? 84 DB 74 ? 8B 8E ? ? ? ? 85 C9 0F 84 ? ? ? ? 57 FF ? ? E8 ? ? ? ? 5B
+db 0F 87 1D 01 00 00
+
+02476F5D: //[6th addy] jmp dword ptr below the 5th addy ^ (FF 24 ? ? ? ? ? 84 DB 74 ? 8B 8E ? ? ? ? 85 C9 0F 84 ? ? ? ? 57 FF ? ? E8 ? ? ? ? 5B)
+jmp dword ptr [ecx*4+02477084] //update the addy in the brackets here as well
+
+dealloc(skill_id_hook)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"Mach No Delay"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(MachGND,023D9139)//75 ? 83 BD ? ? FF FF 00 75 ? 8B
+//75 ? 83 BD ? ? FF FF 00 75 28 8B 53 0C 52 8B 85 ? ? FF FF 50
+[enable]
+MachGND: //Mach GND (Melee/Basic attacks)
+db EB
+
+[disable]
+MachGND:
+db 75
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>112</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Mob Aggro"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(Aggro,128)
+label(return)
+
+Aggro:
+mov eax,[03391D70] // CUserLocal: 8B 3D ? ? ? ?  8B CF F3 ? ? ? 8B ? ? 66 ? ? 45 ? 89 45 EC E8 ? ? ? ? 8B 5D E0 85 C0 74 5C 81 FB ? ? ? ?
+lea eax,[eax+04]
+mov [ecx+000004F0+08],eax // Aggro Offset: E9 ? ? ? ? 8B ? ? ? 00 00 83 ? ? 0F ? ? ? ? ? FF [below] [Offset+0x08]
+
+push ebp
+mov ebp,esp
+push -01
+jmp return
+
+025DB370: // 55 8B EC 6A ? 68 ? ? ? ? 64 ? ? ? ? ? 50 83 ? ? 56 57 A1 ? ? ? ? 33 C5 50 8D ? ? 64 ? ? ? ? ? 8B F9 89 ? ? 8B ? FF ? ? FF
+jmp Aggro
+return:
+
+[DISABLE]
+025DB370:
+push ebp
+mov ebp,esp
+push -01
+
+dealloc(Aggro)
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>114</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"Mob Control"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>// 00 Doesn't seem to do anything but Disconnect to world selection screen
+// 01 Normal Mobs
+// 02 Jump mob
+// 03 Fly Mobs
+// 04 Stationary Mobs
+// 05 Mob Walk Right
+// 06-07-08 Lemmings
+// 09 and above crash MapleStory with "error code: -2147467259 (Unspecified error)"
+
+define(action,06) // change action here
+
+[ENABLE]
+alloc(MobControl,128)
+
+MobControl:
+mov [edi+000004F0],action
+mov eax,[edi+000004F0]
+jmp 025E0D6A+6
+
+025E0D6A:
+jmp MobControl
+db 90
+
+[DISABLE]
+025E0D6A: // CVecCtrlMob::WorkUpdateActive: E9 ? ? ? ? 8B ? ? ? 00 00 83 ? ? 0F ? ? ? ? ? FF [Address below]
+mov eax,[edi+000004F0]
+
+dealloc(MobControl)
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>114</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"Mob Speed Up"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>//AUTO BAN WARNING: DO NOT USE WITH HIDE MOST SKILL ANIMATIONS.
+
+[enable]
+Alloc(MobSpeedUp, 104)
+Label(Return)
+
+MobSpeedUp:
+mov dword ptr [ebp+18],00
+cmp dword ptr [ebp+18],00
+lea edi,[ebx+04]
+jmp Return
+
+016845B7: //83 ? ? 00 8D ? ? 89 83 ? ? 00 00 75 ? 8B
+jmp MobSpeedUp
+nop
+nop
+Return:
+
+[disable]
+016845B7:
+cmp dword ptr [ebp+18],00
+lea edi,[ebx+04]
+
+DeAlloc(MobSpeedUp)
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>114</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys/>
+          <ID>1</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"No Delay Ingame Direction Event"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>//Ingame cutscenes will be faster
+
+[Enable]
+014254AA: //78 ? 8B 46 08 6A 00
+db 90 90
+
+[Disable]
+014254AA:
+db 78 71
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"Kami"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(GetMobXY,128)
+alloc(MobX,4)
+alloc(MobY,4)
+alloc(Teleport,256)
+registersymbol(MobX)
+registersymbol(MobY)
+label(GetMobXY_Return)
+label(Return)
+label(Teleport_End)
+
+Teleport:
+mov esi,[03391D70] // CUserLocal: 8B 3D ? ? ? ? 8B CF F3 [address inside brackets]
+lea ecx,[esi+04]
+mov eax,[esi+04]
+mov eax,[eax+20]
+call eax
+test eax,eax
+je Teleport_End
+push [MobY]
+push [MobX]
+push 00
+mov ecx,eax
+call 00C5E880 // 55 8B EC ? ? 10 ? FF ? 10 8D ? 10 FF ? 0C 56 FF 50 40 85 C0 79 0C 68 ? ? ? ? ? ? E8 ? ? ? ? 5E [first]
+jmp Return
+
+Teleport_End:
+ret
+
+GetMobXY:
+push eax
+mov eax,[ecx+9A0] // 89 87 ? ? ? ? 8D ? ? ? ? ? 8B ? ? 89 ? ? 89 ? ? 8A
+mov [MobX],eax
+add [MobX], #-70 //mob relative position x
+mov eax,[ecx+9A0+4] // OFFSET ABOVE + 0x4
+mov [MobY],eax
+add [MobY], #0 //mob relative position y
+pop eax
+
+//Original
+push ebp
+mov ebp,esp
+push -01
+jmp GetMobXY_Return
+
+025DB370: // 55 8B EC 6A ? 68 ? ? ? ? 64 ? ? ? ? ? 50 83 ? ? 56 57 A1 ? ? ? ? 33 C5 50 8D ? ? 64 ? ? ? ? ? 8B F9 89 ? ? 8B ? FF ? ? FF
+jmp GetMobXY
+GetMobXY_Return:
+
+011E326F:
+jmp Teleport
+Return:
+
+[DISABLE]
+025DB370:
+push ebp
+mov ebp,esp
+push -01
+
+011E326F: //[some call above] 3D B8 0B 00 00 76 ? 6A
+call 011B05A0
+
+dealloc(GetMobXY,128)
+dealloc(MobX,4)
+dealloc(MobY,4)
+dealloc(Teleport)
+unregistersymbol(MobX)
+unregistersymbol(MobY)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"Mob Disarm"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+01629F6B: //75 ? 8D ? ? 8B ? E8 ? ? ? ? 8B ? E8
+jmp 0162A660 //8B ? ? ? ? ? 85 C0 0F 84 ? ? 00 00 2B ? 0F 89 ? ? ? ? C7 ? ? 00 00 00 00 8D
+//backtrack from jmp above
+
+[DISABLE]
+01629F6B:
+db 75 0A 8D 50 FA
+mov ecx, ebx
+call 01636F40 //update call as well
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>49</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Perfect Stance"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+0238EB6E: //85 F6 75 05 39 ? 10 74
+xor esi,esi
+nop
+nop
+
+0238EB75: //address of JE below
+db EB
+
+[DISABLE]
+0238EB6E:
+db 85 F6 75 05
+
+0238EB75:
+db 74
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>49</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Flash Jump No Delay"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>//You will be able to flash jump without delay.
+
+[ENABLE]
+//  call above is get_flash_jump_count
+//  7C ? 33 C0 E9 ? ? 00 00 8B 4D EC E8 ? ? ? ? 85 C0 75 ?
+0244E643:
+db EB
+
+[DISABLE]
+0244E643:
+db 7C
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>49</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Jump Down Anywhere"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+0233FA55:
+db 90 90
+
+[DISABLE]
+// inside CUserLocal::FallDown
+0233FA55: //74 ? 8B CB C7 83 ? ? ? ? 01 00 00 00 E8 ? ? ? ? 85 C0 75 ? 89 B3 ? ? ? ? EB ? 8B CB E8 ? ? ? ? 89 83 ? ? ? ? 6A 01
+db 74 5A
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"No Catch Breath"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>//Your character will not need to catch its breath.
+//*This is client sided for many skills, so you may still be required to catch breath!*
+
+[Enable]
+00F1E9B6: // 79 ? 8B ? C7 ? ? ? 00 00 00 00 00 00 E8
+db 78
+
+[Disable]
+00F1E9B6:
+db 79
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>49</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Slide and Attack"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>//The character can move while performing some skills.
+
+define(SlideAndAttack, 00C7AEEB) // 74 0F 8B ? E8 ? ? ? ? 85 C0 0F 84 ? 00 00 00 8B 5D ? 8B CB E8 ? ? ? ?
+[ENABLE]
+SlideAndAttack:
+db 90 90
+
+[DISABLE]
+SlideAndAttack:
+db 74 0F
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>49</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Unlimited Attack"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>//Bypass the 100 attack limit while standing still.
+
+//7E ? 83 ? ? 7D ? 8B ? ? 2B C2 3D 6A FF FF FF 7E ? 3D 96 00 00 00 7D ? 8B ? ? 3B ? ? 7C ?
+define(UnlimitedAttack, 024189A1) // 1st jle from int CAntiRepeat::TryRepeat(long,long)
+[Enable]
+UnlimitedAttack:
+db EB
+
+[Disable]
+UnlimitedAttack:
+db 7E
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>49</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Pet Loot"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>//Moopler - OuterHaven
+define(delay,#10)
+[Enable]
+Alloc(Hook,128)
+Label(Return)
+label(Exit)
+
+Alloc(timer,4)
+timer:
+dd 00
+
+// CDropPool::TryPickUpDropByPet
+0113FFF5: //2B 81 ? ? 00 00 3D B8 0B 00 00 0F 8C call below
+jmp Hook
+Return:
+
+Hook:
+call 0111C3B0 //original
+push esi
+mov esi,eax
+pushad
+call 024F3210 //get update time 74 ? E8 ? ? ? ? 50 FF ? ? E8 ? ? ? ? 83 C4 08 84 C0 74 ? call below
+mov edx,eax
+sub edx,[timer]
+cmp edx,delay
+jl Exit
+mov [timer],eax
+
+mov edi,[ebp+08] //pet pointer
+lea ecx,[edi+04]
+mov ebx,[edi+04]
+mov ebx,[ebx+20]
+call ebx 	  // CPet::GetVecCtrl
+push [esi+04] // Item Y
+push [esi]    // Item X
+mov ecx,eax
+call 02563320 //E8 ? ? ? ? 83 ? 10 77 CVecCtrlDragon::WarpPoint
+popad
+pop esi
+jmp Return
+
+Exit:
+popad
+pop esi
+jmp Return
+
+
+[Disable]
+dealloc(Hook)
+dealloc(timer)
+
+0113FFF5:
+call 0111C3B0
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>49</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"No Mob Reaction"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(Address,015CD360) //Function start push ebp: 55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 83 EC ? 53 56 57 A1 ? ? ? ? 33 C5 50 8D 45 ? 64 A3 00 00 00 00 8B F9 89 ? ? 8B ? ? ? ? ? C7 ? ? ? ? ? ? 85 ? 74
+//FF ? ? ? ? ? E8 ? ? ? ? 8B ? ? 50 C6 ? ? ? E8 ? ? ? ? C6 &lt;-- If using this one, Offset + 5 then follow call to find offset
+[Enable]
+Address:
+ret 0074
+
+[Disable]
+Address:
+push ebp
+mov ebp,esp
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>49</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

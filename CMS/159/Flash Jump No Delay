@@ -1,0 +1,11 @@
+//You will be able to flash jump without delay.
+
+[ENABLE]
+//  call above is get_flash_jump_count
+//  7C ? 33 C0 E9 ? ? 00 00 8B 4D EC E8 ? ? ? ? 85 C0 75 ?
+0244E643:
+db EB
+
+[DISABLE]
+0244E643:
+db 7C

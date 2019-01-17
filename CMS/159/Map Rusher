@@ -1,0 +1,80 @@
+//Automatically teleport across maps to the desired location selected in world map. 
+//Only works within the same continent.
+
+[Enable]
+Alloc(InGameRush, 128)
+Alloc(TeleportToPortal, 128)
+
+Label(Return)
+Label(End)
+
+021B48AF: //89 ? ? ? ? ? 81 ? ? ? ? ? 3F 42 0F 00 75
+jmp InGameRush
+db 90
+Return:
+
+InGameRush:
+push eax
+call TeleportToPortal
+mov [edi+00014C44],eax
+jmp Return
+
+TeleportToPortal:
+push ebp
+mov ebp, esp
+push esi
+mov esi,[ebp+08]
+test esi, esi
+js End
+mov ecx,[0319BD9C] // CUserLocal 8B 3D ? ? ? ?  8B CF F3
+mov [ecx+00015A2C],1 // AutoPortal  89 81 ? ? ? 00 5D C2 04 00 55 8B ? 83 ? ? 53 56 8B ? 57
+mov ecx,[0319E60C] // PortalBase 8B 3D ?? ?? ?? ?? 8B 47 ?? 85 C0
+mov eax,016A34E0 //CPortalList::GetPortal() Two calls Down OR 55 8B EC 8B ? 08 85 D2 78 ? 8B ? 04 85 C0 74 ? 3B ? ? 73 ? 8B
+push esi
+xor edx, edx
+call eax
+test eax, eax
+je End
+push [eax+4]
+mov ecx,[0319BD9C] // CUserLocal 8B 3D ? ? ? ?  8B CF F3
+mov [ecx+00015A2C],1 // AutoPortal  75 07 8B CE E8 ? ? ? ? 6A 00 8B CE E8 ? ? ? ? 5E
+mov eax,022565E0 //CUserLocal::MoveToPortal() 55 8B EC 6A 00 6A 00 6A 00 6A 00 6A 00 6A 00 6A 00 6A 00 6A 00 6A 00 6A 00
+xor edx, edx
+call eax
+End:
+mov eax, esi
+pop esi
+pop ebp
+ret 0004
+
+//Fix to Maprusher getting "stuck"
+021B4894: //  75 ? 8B 0D ? ? ? ? 8D 87 [SECOND]
+db 90 90
+
+013E8ABC: // 1st result 6A ?? E8 ?? ?? ?? ?? 8B ?? E8 ?? ?? ?? ?? C7 ?? ?? ?? ?? ?? ?? 8D ?? ??
+db 90 90 90
+db 90 90 90
+db 90 90 90 90
+db 90 90 90 90
+
+00C17E60: //  1st result 75 ? E8 ? ? ? ? 85 C0 74 ? 6A 01
+db 90 90
+
+[Disable]
+DeAlloc(InGameRush)
+DeAlloc(TeleportToPortal)
+
+021B48AF:
+mov [edi+00014C44],eax
+
+021B4894:
+db 75 1F
+
+013E8ABC:
+push 01
+call 00C19580
+mov ecx,eax
+call 025CC200
+
+00C17E60:
+db 75 2C

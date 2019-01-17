@@ -1,0 +1,9 @@
+//Ingame cutscenes will be faster
+
+[Enable]
+014254AA: //78 ? 8B 46 08 6A 00
+db 90 90
+
+[Disable]
+014254AA:
+db 78 71
