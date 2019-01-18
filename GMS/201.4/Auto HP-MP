@@ -1,4 +1,14 @@
-[Enable]
+[enable]
+define(CTRL,001D0000)
+define(SHIFT,002A0000)
+define(INSERT,01520000)
+define(DEL,01530000)
+define(HOME,01470000)
+define(END,014F0000)
+define(PAGEUP,01490000)
+define(PAGEDOWN,01510000)
+define(ALT,00380000)
+define(Z,002C0000))
 alloc(HP,4)
 alloc(MP,4)
 alloc(CheckHP,128)
@@ -7,10 +17,12 @@ alloc(PressKey,128)
 label(HPReturn)
 label(MPReturn)
 
-define(HP_Value,#%arg1) //Define HP Trigger Here (Do not remove # tag)
-define(MP_Value,#%arg2) //Define MP Trigger Here (Do not remove # tag)
-define(HealthKey, %arg3) //HP Key
-define(ManaKey, %arg4) //MP Key
+//HP
+define(HP_Value,#1500) //Define HP Trigger Here (Do not remove # tag)
+define(HealthKey, PAGEUP) //HP Key
+//MP
+define(MP_Value,#500) //Define MP Trigger Here (Do not remove # tag)
+define(ManaKey, PAGEDOWN) //MP Key
 
 HP:
 dd HP_Value
@@ -37,24 +49,18 @@ call PressKey
 popad
 jmp MPReturn
 
-022EC41B:
+022EC41B:// 89 ? ? ? 00 00 8D ? ? ? 00 00 FF ? ? ? 00 00 33 F6 50 E8
 jmp CheckHP
 db 90
 HPReturn:
 
-022ECA10:
+022ECA10:// 89 ? ? ? 00 00 50 8D ? ? E8 ? ? ? ? 8B ? ? C7
 jmp CheckMP
 db 90
 MPReturn:
 
 PressKey:
-mov esi,[036B3D4C] // TSingletonCWvsContext
-/*
-Mem Search Addy 55 8B EC 56 8B F1 E8 ? ? F7 FF F6 45 08 01 74 0E 68 ? ? 00 00 56 E8 ? ? ? 00 83 C4 08 8B C6 5E 5D C2 0400
-4 Byte Scan Result Addy. Green Result
-4 Byte Scan Result Addy. Black Result
-4 Byte Scan Result Addy. Green Result
-*/
+mov esi,[036B3D4C] // TSingletonCWvsContext 8B 0D ?? ?? ?? ?? 50 E8 ?? ?? ?? ?? 8D 4D ?? E8 ?? ?? ?? ?? 8B 4D ?? 64 89 0D ?? ?? ?? ?? 59
 mov ecx,[esi+A4]
 push edx
 push 00
